@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "googlefonts-markup"
+version = "0.1.0"
+description = "Small utility to use Google Fonts for markup files"
+authors = ["Kazuya Takei <myself@attakei.net>"]
+license = "Apache-2.0"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^1.9.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
