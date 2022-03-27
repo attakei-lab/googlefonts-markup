@@ -26,6 +26,14 @@ Simple case
    >>> noto_sans_jp.css_tag()
    '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP" rel="stylesheet">'
 
+If you want only URL of CSS, use ``googlefonts_markup.shortcuts``.
+
+.. code-block:: python
+
+   >>> from googlefonts_markup.shortcuts import font_css_url
+   >>> font_css_url("Noto Sans JP")
+   'https://fonts.googleapis.com/css2?family=Noto+Sans+JP'
+
 With italic
 -----------
 
