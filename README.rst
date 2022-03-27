@@ -27,6 +27,7 @@ Simple case
    '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP" rel="stylesheet">'
 
 With italic
+-----------
 
 .. code-block:: python
 
