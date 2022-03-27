@@ -19,7 +19,11 @@ class Axis(BaseModel):
     weight: Union[int, Tuple[int, int]] = 400
 
     def value(self) -> str:
-        weight = f"{self.weight[0]}..{self.weight[1]}" if isinstance(self.weight, tuple) else self.weight
+        weight = (
+            f"{self.weight[0]}..{self.weight[1]}"
+            if isinstance(self.weight, tuple)
+            else self.weight
+        )
         return f"{1 if self.italic else 0},{weight}"
 
     @validator("weight")
@@ -30,8 +34,11 @@ class Axis(BaseModel):
         min_v, max_v = v
         assert 100 <= min_v <= 900, "Axis weight must be between 100 and 900"
         assert 100 <= max_v <= 900, "Axis weight must be between 100 and 900"
-        assert min_v < max_v, "If axis weight is range, weight[0] must be less than weight[1]"
+        assert (
+            min_v < max_v
+        ), "If axis weight is range, weight[0] must be less than weight[1]"
         return v
+
 
 class Font(BaseModel):
     """
