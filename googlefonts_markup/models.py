@@ -1,7 +1,7 @@
-from typing import List, Literal, Optional
+from typing import List, Literal, Optional, Tuple, Union
 from urllib.parse import urlencode
 
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 
 API_URL = "https://fonts.googleapis.com/css2"
 
@@ -16,11 +16,22 @@ class Axis(BaseModel):
     italic: bool = False
     """Using Italic style"""
 
-    weight: int = 400
+    weight: Union[int, Tuple[int, int]] = 400
 
     def value(self) -> str:
-        return f"{1 if self.italic else 0},{self.weight}"
+        weight = f"{self.weight[0]}..{self.weight[1]}" if isinstance(self.weight, tuple) else self.weight
+        return f"{1 if self.italic else 0},{weight}"
 
+    @validator("weight")
+    def check_weight_range(cls, v: Union[int, Tuple[int, int]]):
+        if isinstance(v, int):
+            assert 100 <= v <= 900, "Axis weight must be between 100 and 900"
+            return v
+        min_v, max_v = v
+        assert 100 <= min_v <= 900, "Axis weight must be between 100 and 900"
+        assert 100 <= max_v <= 900, "Axis weight must be between 100 and 900"
+        assert min_v < max_v, "If axis weight is range, weight[0] must be less than weight[1]"
+        return v
 
 class Font(BaseModel):
     """
