@@ -4,6 +4,22 @@ version = "0.1.0"
 description = "Small utility to use Google Fonts for markup files"
 authors = ["Kazuya Takei <myself@attakei.net>"]
 license = "Apache-2.0"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Environment :: Other Environment",
+  "Environment :: Web Environment",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Text Processing :: Markup",
+  "Topic :: Text Processing :: Markup :: HTML",
+  "Topic :: Utilities",
+]
+readme = "README.rst"
 
 [tool.poetry.dependencies]
 python = "^3.10"
