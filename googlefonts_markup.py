@@ -8,6 +8,20 @@ API_URL = "https://fonts.googleapis.com/css2"
 FontDisplayValue = Literal["auto", "block", "swap", "fallback", "optional"]
 
 
+class Axis(BaseModel):
+    """
+    Axis range definition
+    """
+
+    italic: bool = False
+    """Using Italic style"""
+
+    weight: int = 400
+
+    def value(self) -> str:
+        return f"{1 if self.italic else 0},{self.weight}"
+
+
 class Font(BaseModel):
     """
     Font spec of Google Fonts
@@ -15,17 +29,22 @@ class Font(BaseModel):
 
     family_name: str
 
+    axis_list: List[Axis] = []
+
     def spec(self):
-        return self.family_name
+        if len(self.axis_list) == 0:
+            return self.family_name
+        axis_range = "ital,wght@" + ";".join([axis.value() for axis in self.axis_list])
+        return f"{self.family_name}:{axis_range}"
 
     def css_url(self) -> str:
         """
         Build and return URL for using itself by Google Fonts.
         """
         query = {
-            "family": self.family_name,
+            "family": self.spec(),
         }
-        return f"{API_URL}?{urlencode(query)}"
+        return f"{API_URL}?{urlencode(query, safe=':@,;')}"
 
     def css_tag(self) -> str:
         """
@@ -53,7 +72,7 @@ class FontSet(BaseModel):
         if self.text:
             query.append(("text", self.text))
         query.append(("display", self.display))
-        return f"{API_URL}?{urlencode(query)}"
+        return f"{API_URL}?{urlencode(query, safe=',@:;')}"
 
     def css_tag(self) -> str:
         """

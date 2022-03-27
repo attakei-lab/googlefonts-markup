@@ -20,3 +20,13 @@ def test_with_text():
     fontset = FontSet(fonts=[font], text="Hello world")
     assert "family=Noto+Sans+JP" in fontset.css_url()
     assert "text=Hello+world" in fontset.css_url()
+
+
+def test_multiple_fonts():
+    fonts = [
+        Font(family_name="Noto Sans JP"),
+        Font(family_name="Roboto"),
+    ]
+    fontset = FontSet(fonts=fonts)
+    assert "family=Noto+Sans+JP" in fontset.css_url()
+    assert "family=Roboto" in fontset.css_url()

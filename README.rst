@@ -26,6 +26,15 @@ Simple case
    >>> noto_sans_jp.css_tag()
    '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP" rel="stylesheet">'
 
+With italic
+
+.. code-block:: python
+
+   >>> from googlefonts_markup import Axis, Font
+   >>> red_hat_mono = Font(family_name="Red Hat Mono", axis_list=[Axis(italic=True)])
+   >>> red_hat_mono.css_url()
+   'https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@1,400'
+
 Extra attributes
 ----------------
 
