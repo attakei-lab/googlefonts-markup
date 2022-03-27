@@ -20,6 +20,11 @@ jobs:
     - uses: abatilo/actions-poetry@v2.0.0
     - name: Install dependencies
       run: poetry install
+    - name: Run linting
+      run: |
+        poetry run black --check googlefonts_markup tests/
+        poetry run flake8 googlefonts_markup/ tests/
+        poetry run doc8 --max-line-length=119
     - name: Run test
       run: |
         poetry run python -m pytest --doctest-glob="README.rst"
