@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "googlefonts-markup"
-version = "0.1.0"
+version = "0.2.0"
 description = "Small utility to use Google Fonts for markup files"
 authors = ["Kazuya Takei <myself@attakei.net>"]
 license = "Apache-2.0"
