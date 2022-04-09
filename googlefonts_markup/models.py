@@ -1,7 +1,13 @@
-from typing import List, Literal, Optional, Tuple, Union
+from typing import List, Optional, Tuple, Union
 from urllib.parse import urlencode
 
 from pydantic import BaseModel, validator
+
+# For python3.7
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 
 API_URL = "https://fonts.googleapis.com/css2"
 
