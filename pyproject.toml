@@ -27,12 +27,14 @@ readme = "README.rst"
 [tool.poetry.dependencies]
 python = "^3.7 | ^3.8 | ^3.9 | ^3.10"
 pydantic = "*"
+typing-extensions = { version = "*", python = "^3.7" }
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.1"
 doc8 = "^0.10.1"
 flake8 = "^4.0.1"
 black = "^22.1.0"
+typed-ast = { version = "^1.5.2", python = "^3.7" }
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
