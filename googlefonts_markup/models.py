@@ -46,6 +46,24 @@ class Axis(BaseModel):
         return v
 
 
+def build_css_tag(url: str, defer: bool) -> str:
+    """
+    Make ``link`` element from URL and donload-rule.
+
+    :param url: Target URL
+    :param defer: Flag to donload defer
+    """
+    attrs = {
+        "href": url,
+        "rel": "stylesheet",
+    }
+    if defer:
+        attrs["rel"] = "preload"
+        attrs["as"] = "style"
+    attr_text = " ".join(f'{k}="{v}"' for k, v in attrs.items())
+    return f'<link {attr_text}>'
+
+
 class Font(BaseModel):
     """
     Font spec of Google Fonts
@@ -70,11 +88,13 @@ class Font(BaseModel):
         }
         return f"{API_URL}?{urlencode(query, safe=':@,;')}"
 
-    def css_tag(self) -> str:
+    def css_tag(self, defer: bool = False) -> str:
         """
         Return HTML element with ``self.css_url()``.
+
+        :param defer: Using defer downloading (default is False)
         """
-        return f'<link href="{self.css_url()}" rel="stylesheet">'
+        return build_css_tag(self.css_url(), defer)
 
 
 class FontSet(BaseModel):
@@ -98,8 +118,10 @@ class FontSet(BaseModel):
         query.append(("display", self.display))
         return f"{API_URL}?{urlencode(query, safe=',@:;')}"
 
-    def css_tag(self) -> str:
+    def css_tag(self, defer: bool = False) -> str:
         """
         Return HTML element with ``self.css_url()``.
+
+        :param defer: Using defer downloading (default is False)
         """
-        return f'<link href="{self.css_url()}" rel="stylesheet">'
+        return build_css_tag(self.css_url(), defer)
