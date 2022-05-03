@@ -1,4 +1,4 @@
-name: Testing codes
+name: Check project
 
 on:
   push:
