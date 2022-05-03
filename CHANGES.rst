@@ -2,6 +2,11 @@
 Changelogs
 ==========
 
+v0.3.0
+======
+
+* Add suporting python 3.7
+
 v0.2.0
 ======
 
