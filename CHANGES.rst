@@ -2,6 +2,12 @@
 Changelogs
 ==========
 
+v0.4.0
+======
+
+* Support ``defer`` by ``css_tag()`` method
+
+
 v0.3.0
 ======
 
