@@ -61,7 +61,7 @@ def build_css_tag(url: str, defer: bool) -> str:
         attrs["rel"] = "preload"
         attrs["as"] = "style"
     attr_text = " ".join(f'{k}="{v}"' for k, v in attrs.items())
-    return f'<link {attr_text}>'
+    return f"<link {attr_text}>"
 
 
 class Font(BaseModel):
