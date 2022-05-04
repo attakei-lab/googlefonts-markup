@@ -75,7 +75,7 @@ Defering on HTML
    >>> from googlefonts_markup import Font, FontSet
    >>> font = Font(family_name="Noto Sans JP")
    >>> font.css_tag(defer=True)
-   '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP" rel="preload" as="style">'
+   '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP" rel="preload" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">'
 
 Installation
 ============

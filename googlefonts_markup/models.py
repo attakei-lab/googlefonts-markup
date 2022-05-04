@@ -60,6 +60,7 @@ def build_css_tag(url: str, defer: bool) -> str:
     if defer:
         attrs["rel"] = "preload"
         attrs["as"] = "style"
+        attrs["onload"] = "this.onload=null;this.rel='stylesheet'"
     attr_text = " ".join(f'{k}="{v}"' for k, v in attrs.items())
     return f"<link {attr_text}>"
 
