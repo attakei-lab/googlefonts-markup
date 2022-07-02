@@ -19,8 +19,6 @@ Installation
 Usage
 =====
 
-.. note:: WIP
-
 Simple case
 -----------
 
