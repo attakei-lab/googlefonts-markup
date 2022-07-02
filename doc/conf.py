@@ -1,4 +1,8 @@
 # -- Path setup
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).parent / "libs"))
 
 # -- Project information
 project = "googlefonts-markup"
@@ -7,7 +11,9 @@ author = "Kazuya Takei"
 release = "0.4.0"
 
 # -- General configuration
-extensions = []
+extensions = [
+    "sphinx_pyscript",
+]
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
