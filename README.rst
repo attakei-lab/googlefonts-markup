@@ -9,6 +9,13 @@ Overview
 
 This is small utility to handle specs of Google Fonts in my products.
 
+Installation
+============
+
+.. code-block:: console
+
+   pip install googlefonts-markup
+
 Usage
 =====
 
@@ -76,10 +83,3 @@ Defering on HTML
    >>> font = Font(family_name="Noto Sans JP")
    >>> font.css_tag(defer=True)
    '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP" rel="preload" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">'
-
-Installation
-============
-
-.. code-block:: console
-
-   pip install git+https://github.com/attakei-lab/googlefonts-markup
